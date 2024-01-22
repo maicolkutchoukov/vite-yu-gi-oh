@@ -12,10 +12,20 @@ export default {
 </script>
 
 <template>
-    <header>
-        HEADER
+    <header class="d-flex align-items-center">
+        
+            <img class="p-4"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Yu-Gi-Oh%21_%28Logo%29.jpg/640px-Yu-Gi-Oh%21_%28Logo%29.jpg" alt="">
+        
+        
+        <h1>
+            Yu-Gi-Oh API
+        </h1>
     </header>
 </template>
 
 <style lang="scss" scoped>
+img{
+    width: 150px;
+}
 </style>
