@@ -1,5 +1,6 @@
 <script>
 import {store} from '../store.js';
+import AppSelectArchetype from './AppSelectArchetype.vue';
 export default {
     data() {
         return {
@@ -11,6 +12,9 @@ export default {
     },
     methods: {
 
+    },
+    components:{
+        AppSelectArchetype
     }
 }
 </script>
@@ -23,12 +27,7 @@ export default {
             </div>
         </div>
         <div v-else="store.cards.length == 25" class="container">
-            <select class="m-3 p-1 border rounded" name="search" id="search-type">
-                <option value="">Alien</option>
-                <option value="">Infernoble Arms</option>
-                <option value="">Noble Knight</option>
-                <option value="">Melodius</option>
-            </select>
+            <AppSelectArchetype />
             <div class="cards-container p-5 bg-white">
                 <div class="bg-dark text-white p-3 fw-bold">
                     Found {{ store.cards.length }} cards
