@@ -12,10 +12,13 @@ export default {
 </script>
 
 <template>
-    <footer>
-        FOOTER
+    <footer class="bg-warning">
+
     </footer>
 </template>
 
 <style lang="scss" scoped>
+footer{
+    min-height: 50px;
+}
 </style>

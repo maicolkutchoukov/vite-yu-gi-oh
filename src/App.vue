@@ -21,10 +21,13 @@ import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import AppFooter from './components/AppFooter.vue';
 import axios from 'axios';
+import {store} from './store.js';
+
 export default {
     data() {
         return {
-            cards:[]
+            /* cards:[], */
+            store,
         };
     },
     components: {
@@ -36,11 +39,11 @@ export default {
 
     },
     created(){
-        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=25&offset=0')
             .then((response) => {
-                this.cards= response.data.data;
+                this.store.cards= response.data.data;
                 console.log(response.data);
-                console.log(this.cards[0].name);
+                console.log(this.store.cards[0].name);
 
             })
     }

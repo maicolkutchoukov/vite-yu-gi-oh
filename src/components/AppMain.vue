@@ -18,7 +18,7 @@ export default {
 
 <template>
 
-        <AppSingleCard />
+    <AppSingleCard />
 
 </template>
 

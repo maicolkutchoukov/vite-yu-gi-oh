@@ -19,7 +19,7 @@ export default {
         
         
         <h1>
-            Yu-Gi-Oh API
+            Yu-Gi-Oh Api
         </h1>
     </header>
 </template>
