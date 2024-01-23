@@ -1,5 +1,6 @@
 <script>
 import {store} from '../store.js';
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -10,9 +11,13 @@ export default {
     methods: {
         searchArchetypeFn(){
             if (store.searchArchetype.length > 0){
-                this.baseUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=25&offset=0',
-                this.store.baseUrl += '?archetype=' + this.store.searchArchetype
-                console.log(this.store.baseUrl)
+                let myUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=' + this.store.searchArchetype
+                this.store.searchArchetype = ''
+                axios.get(myUrl)
+                .then((response) => {
+                    this.store.cards= response.data.data;
+                    console.log('cards',this.store.cards)
+                })
             }
         }
     }
@@ -20,13 +25,13 @@ export default {
 </script>
 
 <template>
-    {{ store.searchArchetype }}
-    <form @submit.prevent="searchArchetypeFn()" action="">
+    <form action="">
         <select 
             v-model="store.searchArchetype" 
             class="m-3 p-1 border rounded" 
             name="search" 
-            id="search-type">
+            id="search-type"
+            @click="searchArchetypeFn()">
             <option value="" disabled>
                 Seleziona Archetipo
             </option>
@@ -37,7 +42,7 @@ export default {
             </option>
             
         </select>
-        <button type="submit">Cerca!</button>
+        <button @click="searchArchetypeFn()" type="button">Cerca!</button>
     </form>
 </template>
 

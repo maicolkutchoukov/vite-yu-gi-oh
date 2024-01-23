@@ -29,7 +29,8 @@ export default {
 
             axios.get(store.baseUrl, {
                 params: {
-                    /* archetype: store.searchArchetype, */
+                    num : '25',
+                    offset: '0'
                 }
             })
             .then((response) => {
@@ -64,7 +65,7 @@ export default {
 
     <AppHeader />
 
-    <AppMain />
+    <AppMain @archetypeSearch="getApiCards()"/>
 
     <AppFooter />
 </template>
