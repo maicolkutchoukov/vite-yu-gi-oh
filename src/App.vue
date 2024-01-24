@@ -9,6 +9,7 @@ export default {
     data() {
         return {
             store,
+            
         };
     },
     components: {
@@ -26,10 +27,10 @@ export default {
             })
         },  */
         getApiCards(){
-
+            store.isLoading = true
             axios.get(store.baseUrl, {
                 params: {
-                    num : '25',
+                    num : store.numberCards,
                     offset: '0'
                 }
             })
@@ -38,23 +39,19 @@ export default {
                 console.log(response.data);
                 console.log(this.store.cards[0].archetype);
             })
-            .catch((error) => {
-                    this.store.characters = [];
-                    console.log('errore')
-            })
-            .finally(() => {
-                console.log('Questo console.log viene eseguito sempre alla fine della chiamata API');
-            })
         }, 
         getApiArchetype(){
-            axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+            axios.get(store.archetypeUrl)
             .then((response) => {
                 this.store.archetype = response.data
                 console.log(this.store.archetype);
             })
-        }  
+            .finally(() => {
+                store.isLoading = false
+            })
+        } 
     },
-    mounted(){
+    created(){
         this.getApiCards()
         this.getApiArchetype()   
     }

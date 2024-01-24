@@ -21,12 +21,12 @@ export default {
 
 <template>
     <main class="bg-warning">
-        <div v-if="store.cards.length < 1" class="d-flex justify-content-center p-5">
+        <div v-if="store.isLoading" class="d-flex justify-content-center p-5">
             <div class="spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <div v-else="store.cards.length == 1" class="container">
+        <div v-else="store.isLoading == false" class="container">
             <AppSelectArchetype />
             <div class="cards-container p-5 bg-white">
                 <div class="bg-dark text-white p-3 fw-bold">
